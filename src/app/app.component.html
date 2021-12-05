@@ -2,11 +2,36 @@
 	body {
 		color: wheat;
 	}
+
+	.horizontal-buttons {
+		text-align: center;
+		display: inline;
+	}
+
+	.customButton {
+		width: 200px;
+	}
+
 </style>
 <body>
-	<h1>Hello</h1>
+<mat-accordion>
+	<mat-expansion-panel hideToggle>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				Chart Type
+			</mat-panel-title>
+			<mat-panel-description>
+				Select a different type of chart to view content
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+		<div class="horizontal-buttons" *ngFor="let chartTypeType of chartTypes">
+			<button class="mat-button customButton" (click)="setChartType(chartTypeType)">{{chartTypeType}}</button>
+		</div>
+	</mat-expansion-panel>
 
-	<button (click)="getAllCountriesLatest()">Get Data</button>
+</mat-accordion>
+<h1>Hello</h1>
+	<button class="mat-button" (click)="getAllCountriesLatest()">Get Data</button>
 
 	<div *ngIf="data.length != 0 ">
 		<google-chart #chart
